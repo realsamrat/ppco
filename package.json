@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "fumadocs-core": "^16.6.17",
+    "fumadocs-mdx": "^14.2.10",
+    "fumadocs-ui": "^16.6.17",
     "next": "^15.3.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
