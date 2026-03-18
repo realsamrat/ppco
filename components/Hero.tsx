@@ -1,79 +1,107 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from './Button';
+import { GALLERY_DATA } from '../constants';
 
 const CATEGORIES = [
     {
         id: 'weddings',
-        title: 'Weddings',
-        image: 'https://picsum.photos/seed/weddings/800/1200',
+        title: GALLERY_DATA.weddings.serviceName,
+        image: GALLERY_DATA.weddings.heroImage,
         description: 'Capturing your love story',
     },
     {
         id: 'engagements',
-        title: 'Engagements',
-        image: 'https://picsum.photos/seed/engagements/800/1200',
+        title: GALLERY_DATA.engagements.serviceName,
+        image: GALLERY_DATA.engagements.heroImage,
         description: 'The beginning of forever',
     },
     {
         id: 'families',
-        title: 'Families',
-        image: 'https://picsum.photos/seed/families/800/1200',
+        title: GALLERY_DATA.families.serviceName,
+        image: GALLERY_DATA.families.heroImage,
         description: 'Moments that matter',
     },
     {
         id: 'branding',
-        title: 'Branding',
-        image: 'https://picsum.photos/seed/branding/800/1200',
+        title: GALLERY_DATA.branding.serviceName,
+        image: GALLERY_DATA.branding.heroImage,
         description: 'Professional brand imagery',
     },
     {
         id: 'headshots',
-        title: 'Headshots',
-        image: 'https://picsum.photos/seed/headshots/800/1200',
+        title: GALLERY_DATA.headshots.serviceName,
+        image: GALLERY_DATA.headshots.heroImage,
         description: 'Stand out from the crowd',
     },
     {
         id: 'seniors',
-        title: 'High School Seniors',
-        image: 'https://picsum.photos/seed/seniors/800/1200',
+        title: GALLERY_DATA.seniors.serviceName,
+        image: GALLERY_DATA.seniors.heroImage,
         description: 'Celebrate this milestone',
     },
 ];
 
 export const Hero: React.FC = () => {
     return (
-        <section className="pt-28 md:pt-32">
-            <div className="w-full overflow-x-auto scrollbar-hide">
-                <div className="flex gap-1 w-max">
+        <section className="pt-28 md:pt-32 relative group/carousel">
+            {/* Fade Overlays */}
+            <div className="absolute inset-y-0 left-0 w-12 md:w-32 lg:w-48 bg-gradient-to-r from-cream to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-12 md:w-32 lg:w-48 bg-gradient-to-l from-cream to-transparent z-10 pointer-events-none" />
+
+            <div className="w-full overflow-x-auto overflow-y-hidden scrollbar-hide">
+                <div className="flex gap-1 w-max pb-8 md:pb-12">
+                    {/* Spacers to force items to start under the fade for a perfect blend */}
+                    <div className="w-6 md:w-16 lg:w-24 flex-shrink-0" />
+
                     {CATEGORIES.map((category) => (
                         <div
                             key={category.id}
-                            className="relative w-[85vw] md:w-[40vw] lg:w-[25vw] aspect-[3/4] flex-shrink-0 group overflow-hidden"
+                            className="relative w-[85vw] md:w-[40vw] lg:w-[25vw] aspect-[3/4] flex-shrink-0 group"
                         >
-                            {/* Image */}
-                            <img
-                                src={category.image}
-                                alt={category.title}
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            />
+                            <div className="w-full h-full relative transition-all duration-500 group-hover:scale-[0.98]"
+                                 style={{
+                                     WebkitMaskImage: 'url(/frame_mask.png)',
+                                     WebkitMaskSize: '100% 100%',
+                                     WebkitMaskRepeat: 'no-repeat',
+                                     WebkitMaskPosition: 'center',
+                                     maskImage: 'url(/frame_mask.png)',
+                                     maskSize: '100% 100%',
+                                     maskRepeat: 'no-repeat',
+                                     maskPosition: 'center'
+                                 }}>
+                                {/* Image */}
+                                <img
+                                    src={category.image}
+                                    alt={category.title}
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
 
-                            {/* Gradient Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90" />
+                                {/* Organic Texture Overlay (Softer Inner Shadow) */}
+                                <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(0,0,0,0.15)] pointer-events-none" />
+
+                                {/* Lighter Smooth Gradient Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-100" />
+                            </div>
 
                             {/* Content - Lower 3rd */}
-                            <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 flex flex-col items-center text-center">
-                                <h2 className="font-heading text-2xl md:text-3xl text-warmWhite mb-2">
+                            <div className="absolute bottom-0 left-0 w-full p-6 md:pb-16 md:pt-10 flex flex-col items-center text-center z-20">
+                                <h2 className="font-heading text-2xl md:text-4xl text-warmWhite mb-2 drop-shadow-xl">
                                     {category.title}
                                 </h2>
-                                <p className="font-nav text-xs uppercase tracking-widest text-warmWhite/90 mb-6">
+                                <p className="font-nav text-[10px] md:text-xs uppercase tracking-[3px] font-medium text-warmWhite/90 mb-6 drop-shadow-lg">
                                     {category.description}
                                 </p>
-                                <Button variant="primary" className="!bg-warmWhite !text-forest hover:!bg-terracotta hover:!text-warmWhite !border-none">
-                                    View Gallery
-                                </Button>
+                                <Link to={`/services/${category.id}`}>
+                                    <Button variant="primary" className="!bg-[#161613] !text-warmWhite hover:!bg-terracotta hover:!text-warmWhite border border-warmWhite/10 hover:border-terracotta !py-4 !px-8 text-xs font-bold tracking-widest transition-all duration-300 shadow-xl">
+                                        View Gallery
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                     ))}
+
+                    <div className="w-6 md:w-16 lg:w-24 flex-shrink-0" />
                 </div>
             </div>
         </section>

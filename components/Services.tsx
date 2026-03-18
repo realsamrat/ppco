@@ -1,42 +1,50 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from './Button';
+import { GALLERY_DATA } from '../constants';
 
 const SERVICES = [
     {
         id: 'weddings',
-        title: 'Weddings',
-        image: 'https://picsum.photos/seed/weddings/800/1200',
+        title: GALLERY_DATA.weddings.serviceName,
+        image: GALLERY_DATA.weddings.heroImage,
         description: 'Capturing your love story',
+        size: 'tall',
     },
     {
         id: 'engagements',
-        title: 'Engagements',
-        image: 'https://picsum.photos/seed/engagements/800/1200',
+        title: GALLERY_DATA.engagements.serviceName,
+        image: GALLERY_DATA.engagements.heroImage,
         description: 'The beginning of forever',
+        size: 'square',
     },
     {
         id: 'families',
-        title: 'Families',
-        image: 'https://picsum.photos/seed/families/800/1200',
+        title: GALLERY_DATA.families.serviceName,
+        image: GALLERY_DATA.families.heroImage,
         description: 'Moments that matter',
+        size: 'square',
     },
     {
         id: 'branding',
-        title: 'Branding',
-        image: 'https://picsum.photos/seed/branding/800/1200',
+        title: GALLERY_DATA.branding.serviceName,
+        image: GALLERY_DATA.branding.heroImage,
         description: 'Professional brand imagery',
+        size: 'tall',
     },
     {
         id: 'headshots',
-        title: 'Headshots',
-        image: 'https://picsum.photos/seed/headshots/800/1200',
+        title: GALLERY_DATA.headshots.serviceName,
+        image: GALLERY_DATA.headshots.heroImage,
         description: 'Stand out from the crowd',
+        size: 'square',
     },
     {
         id: 'seniors',
-        title: 'High School Seniors',
-        image: 'https://picsum.photos/seed/seniors/800/1200',
+        title: GALLERY_DATA.seniors.serviceName,
+        image: GALLERY_DATA.seniors.heroImage,
         description: 'Celebrate this milestone',
+        size: 'square',
     },
 ];
 
@@ -58,119 +66,36 @@ export const Services: React.FC = () => {
 
                 {/* Masonry Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {/* Weddings - Tall */}
-                    <div className="relative group overflow-hidden cursor-pointer aspect-[3/4] lg:row-span-2">
-                        <img
-                            src={SERVICES[0].image}
-                            alt={SERVICES[0].title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
-                        <div className="absolute bottom-0 left-0 w-full p-8 text-center">
-                            <h3 className="font-heading text-3xl text-warmWhite mb-2">{SERVICES[0].title}</h3>
-                            <p className="font-nav text-xs uppercase tracking-widest text-warmWhite/90 mb-6">
-                                {SERVICES[0].description}
-                            </p>
-                            <Button variant="primary" className="!bg-warmWhite !text-forest hover:!bg-terracotta hover:!text-warmWhite !border-none">
-                                Learn More
-                            </Button>
+                    {SERVICES.map((service) => (
+                        <div
+                            key={service.id}
+                            className={`relative group overflow-hidden cursor-pointer ${
+                                service.size === 'tall'
+                                    ? 'aspect-[3/4] lg:row-span-2'
+                                    : 'aspect-square'
+                            }`}
+                        >
+                            <img
+                                src={service.image}
+                                alt={service.title}
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
+                            <div className={`absolute bottom-0 left-0 w-full text-center ${service.size === 'tall' ? 'p-8' : 'p-6'}`}>
+                                <h3 className={`font-heading text-warmWhite mb-2 ${service.size === 'tall' ? 'text-3xl' : 'text-2xl'}`}>
+                                    {service.title}
+                                </h3>
+                                <p className={`font-nav text-xs uppercase tracking-widest text-warmWhite/90 ${service.size === 'tall' ? 'mb-6' : 'mb-4'}`}>
+                                    {service.description}
+                                </p>
+                                <Link to={`/services/${service.id}`}>
+                                    <Button variant="primary" className="!bg-warmWhite !text-forest hover:!bg-terracotta hover:!text-warmWhite !border-none">
+                                        View Gallery
+                                    </Button>
+                                </Link>
+                            </div>
                         </div>
-                    </div>
-
-                    {/* Engagements - Square */}
-                    <div className="relative group overflow-hidden cursor-pointer aspect-square">
-                        <img
-                            src={SERVICES[1].image}
-                            alt={SERVICES[1].title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
-                        <div className="absolute bottom-0 left-0 w-full p-6 text-center">
-                            <h3 className="font-heading text-2xl text-warmWhite mb-2">{SERVICES[1].title}</h3>
-                            <p className="font-nav text-xs uppercase tracking-widest text-warmWhite/90 mb-4">
-                                {SERVICES[1].description}
-                            </p>
-                            <Button variant="primary" className="!bg-warmWhite !text-forest hover:!bg-terracotta hover:!text-warmWhite !border-none">
-                                Learn More
-                            </Button>
-                        </div>
-                    </div>
-
-                    {/* Families - Square */}
-                    <div className="relative group overflow-hidden cursor-pointer aspect-square">
-                        <img
-                            src={SERVICES[2].image}
-                            alt={SERVICES[2].title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
-                        <div className="absolute bottom-0 left-0 w-full p-6 text-center">
-                            <h3 className="font-heading text-2xl text-warmWhite mb-2">{SERVICES[2].title}</h3>
-                            <p className="font-nav text-xs uppercase tracking-widest text-warmWhite/90 mb-4">
-                                {SERVICES[2].description}
-                            </p>
-                            <Button variant="primary" className="!bg-warmWhite !text-forest hover:!bg-terracotta hover:!text-warmWhite !border-none">
-                                Learn More
-                            </Button>
-                        </div>
-                    </div>
-
-                    {/* Branding - Tall */}
-                    <div className="relative group overflow-hidden cursor-pointer aspect-[3/4] lg:row-span-2">
-                        <img
-                            src={SERVICES[3].image}
-                            alt={SERVICES[3].title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
-                        <div className="absolute bottom-0 left-0 w-full p-8 text-center">
-                            <h3 className="font-heading text-3xl text-warmWhite mb-2">{SERVICES[3].title}</h3>
-                            <p className="font-nav text-xs uppercase tracking-widest text-warmWhite/90 mb-6">
-                                {SERVICES[3].description}
-                            </p>
-                            <Button variant="primary" className="!bg-warmWhite !text-forest hover:!bg-terracotta hover:!text-warmWhite !border-none">
-                                Learn More
-                            </Button>
-                        </div>
-                    </div>
-
-                    {/* Headshots - Square */}
-                    <div className="relative group overflow-hidden cursor-pointer aspect-square">
-                        <img
-                            src={SERVICES[4].image}
-                            alt={SERVICES[4].title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
-                        <div className="absolute bottom-0 left-0 w-full p-6 text-center">
-                            <h3 className="font-heading text-2xl text-warmWhite mb-2">{SERVICES[4].title}</h3>
-                            <p className="font-nav text-xs uppercase tracking-widest text-warmWhite/90 mb-4">
-                                {SERVICES[4].description}
-                            </p>
-                            <Button variant="primary" className="!bg-warmWhite !text-forest hover:!bg-terracotta hover:!text-warmWhite !border-none">
-                                Learn More
-                            </Button>
-                        </div>
-                    </div>
-
-                    {/* High School Seniors - Square */}
-                    <div className="relative group overflow-hidden cursor-pointer aspect-square">
-                        <img
-                            src={SERVICES[5].image}
-                            alt={SERVICES[5].title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
-                        <div className="absolute bottom-0 left-0 w-full p-6 text-center">
-                            <h3 className="font-heading text-2xl text-warmWhite mb-2">{SERVICES[5].title}</h3>
-                            <p className="font-nav text-xs uppercase tracking-widest text-warmWhite/90 mb-4">
-                                {SERVICES[5].description}
-                            </p>
-                            <Button variant="primary" className="!bg-warmWhite !text-forest hover:!bg-terracotta hover:!text-warmWhite !border-none">
-                                Learn More
-                            </Button>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>

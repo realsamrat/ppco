@@ -28,33 +28,101 @@ const generateGalleryImages = (seed: string, count: number = 30): string[] => {
 export const GALLERY_DATA = {
   weddings: {
     serviceName: 'Weddings',
-    heroImage: 'https://picsum.photos/seed/wedding-hero/1920/1080',
-    galleryImages: generateGalleryImages('wedding-gallery-')
+    heroImage: '/images/weddings/wedding-01.jpg',
+    galleryImages: [
+      '/images/weddings/wedding-01.jpg',
+      '/images/weddings/wedding-02.jpg',
+      '/images/weddings/wedding-03.jpg',
+      '/images/weddings/wedding-04.jpg',
+      '/images/weddings/wedding-05.jpg',
+      '/images/weddings/wedding-06.jpg',
+      '/images/weddings/wedding-07.jpg',
+      '/images/weddings/wedding-08.jpg',
+      '/images/weddings/wedding-09.jpg',
+      '/images/weddings/wedding-10.jpg',
+    ]
   },
   engagements: {
     serviceName: 'Engagements',
-    heroImage: 'https://picsum.photos/seed/engagement-hero/1920/1080',
-    galleryImages: generateGalleryImages('engagement-gallery-')
+    heroImage: '/images/engagements/engagement-01.jpg',
+    galleryImages: [
+      '/images/engagements/engagement-01.jpg',
+      '/images/engagements/engagement-02.jpg',
+      '/images/engagements/engagement-03.jpg',
+      '/images/engagements/engagement-04.jpg',
+      '/images/engagements/engagement-05.jpg',
+      '/images/engagements/engagement-06.jpg',
+      '/images/engagements/engagement-07.jpg',
+      '/images/engagements/engagement-08.jpg',
+      '/images/engagements/engagement-09.jpg',
+      '/images/engagements/engagement-10.jpg',
+    ]
   },
   families: {
     serviceName: 'Families',
-    heroImage: 'https://picsum.photos/seed/family-hero/1920/1080',
-    galleryImages: generateGalleryImages('family-gallery-')
+    heroImage: '/images/families/family-01.jpg',
+    galleryImages: [
+      '/images/families/family-01.jpg',
+      '/images/families/family-02.jpg',
+      '/images/families/family-03.jpg',
+      '/images/families/family-04.jpg',
+      '/images/families/family-05.jpg',
+      '/images/families/family-06.jpg',
+      '/images/families/family-07.jpg',
+      '/images/families/family-08.jpg',
+      '/images/families/family-09.jpg',
+      '/images/families/family-10.jpg',
+    ]
   },
   branding: {
     serviceName: 'Branding',
-    heroImage: 'https://picsum.photos/seed/branding-hero/1920/1080',
-    galleryImages: generateGalleryImages('branding-gallery-')
+    heroImage: '/images/branding/branding-01.jpg',
+    galleryImages: [
+      '/images/branding/branding-01.jpg',
+      '/images/branding/branding-02.jpg',
+      '/images/branding/branding-03.jpg',
+      '/images/branding/branding-04.jpg',
+      '/images/branding/branding-05.jpg',
+      '/images/branding/branding-06.jpg',
+      '/images/branding/branding-07.jpg',
+      '/images/branding/branding-08.jpg',
+      '/images/branding/branding-09.jpg',
+      '/images/branding/branding-10.jpg',
+    ]
   },
   headshots: {
     serviceName: 'Headshots',
-    heroImage: 'https://picsum.photos/seed/headshot-hero/1920/1080',
-    galleryImages: generateGalleryImages('headshot-gallery-')
+    heroImage: '/images/headshots/headshot-portland-AB8I9699.webp',
+    galleryImages: [
+      '/images/headshots/headshot-portland-AB8I9699.webp',
+      '/images/headshots/headshot-portland-AB8I0521.webp',
+      '/images/headshots/headshot-portland-abby.webp',
+      '/images/headshots/headshot-portland-amy.webp',
+      '/images/headshots/headshot-portland-andy.webp',
+      '/images/headshots/headshot-portland-angela-headshot.webp',
+      '/images/headshots/headshot-portland-austyn.webp',
+      '/images/headshots/headshot-portland-cheryl.webp',
+      '/images/headshots/headshot-portland-chris.webp',
+      '/images/headshots/headshot-portland-emily.webp',
+      '/images/headshots/headshot-portland-mark.webp',
+      '/images/headshots/headshot-portland-sahil.webp',
+    ]
   },
   seniors: {
     serviceName: 'High School Seniors',
-    heroImage: 'https://picsum.photos/seed/senior-hero/1920/1080',
-    galleryImages: generateGalleryImages('senior-gallery-')
+    heroImage: '/images/seniors/senior-01.jpg',
+    galleryImages: [
+      '/images/seniors/senior-01.jpg',
+      '/images/seniors/senior-02.jpg',
+      '/images/seniors/senior-03.jpg',
+      '/images/seniors/senior-04.jpg',
+      '/images/seniors/senior-05.jpg',
+      '/images/seniors/senior-06.jpg',
+      '/images/seniors/senior-07.jpg',
+      '/images/seniors/senior-08.jpg',
+      '/images/seniors/senior-09.jpg',
+      '/images/seniors/senior-10.jpg',
+    ]
   }
 };
 
