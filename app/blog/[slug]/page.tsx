@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { source } from '../../../lib/source'
+import { source, getPageOgImage } from '../../../lib/source'
 import { getMDXComponents } from '../../../mdx-components'
 import { Button } from '../../../components/Button'
 import { BlogPostJsonLd, BreadcrumbJsonLd } from '../../../components/JsonLd'
@@ -27,6 +27,11 @@ export async function generateMetadata({
       type: 'article',
       publishedTime: new Date(page.data.date).toISOString(),
       section: page.data.category,
+      images: [{ url: getPageOgImage(page), width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: [getPageOgImage(page)],
     },
   }
 }
