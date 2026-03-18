@@ -8,7 +8,8 @@ import { ContactForm } from '../components/ContactForm'
 import { Button } from '../components/Button'
 import { Accordion } from '../components/Accordion'
 import { IconMountain, IconCheck } from '../components/Icons'
-import { PHOTOGRAPHERS, PROCESS_STEPS, BLOG_POSTS, FAQS } from '../constants'
+import { PHOTOGRAPHERS, PROCESS_STEPS, FAQS } from '../constants'
+import { source } from '../lib/source'
 import {
   LocalBusinessJsonLd,
   PhotographyBusinessJsonLd,
@@ -19,6 +20,9 @@ import {
 import Link from 'next/link'
 
 export default function HomePage() {
+  const recentPosts = source.getPages()
+    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+    .slice(0, 3)
   return (
     <>
       <LocalBusinessJsonLd />
@@ -171,34 +175,38 @@ export default function HomePage() {
               </h4>
               <h2 className="font-heading text-4xl text-forest">Recent Stories</h2>
             </div>
-            <a
-              href="#"
+            <Link
+              href="/blog"
               className="hidden md:block font-nav text-sm font-bold uppercase tracking-widest text-terracotta hover:text-forest transition-colors border-b border-terracotta pb-1"
             >
               View All Posts
-            </a>
+            </Link>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {BLOG_POSTS.slice(0, 3).map((post, i) => (
-              <Link key={i} href={`/blog/${post.slug}`} className="group cursor-pointer flex flex-col h-full">
-                <div className="aspect-[3/2] overflow-hidden mb-6 bg-stone">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+            {recentPosts.map((post) => (
+              <Link key={post.slugs[0]} href={`/blog/${post.slugs[0]}`} className="group cursor-pointer flex flex-col h-full">
+                <div className="aspect-[3/2] overflow-hidden mb-6 bg-stone rounded-[12px]">
+                  {post.data.image && (
+                    <img
+                      src={post.data.image}
+                      alt={post.data.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  )}
                 </div>
                 <span className="font-nav text-xs font-bold uppercase tracking-widest text-terracotta mb-3 block">
-                  {post.category}
+                  {post.data.category}
                 </span>
                 <h3 className="font-heading text-2xl text-forest mb-3 group-hover:text-terracotta transition-colors">
-                  {post.title}
+                  {post.data.title}
                 </h3>
                 <p className="font-body text-forest-light text-sm leading-relaxed mb-4 flex-grow">
-                  {post.excerpt}
+                  {post.data.description}
                 </p>
-                <span className="font-nav text-xs text-sage">{post.date}</span>
+                <span className="font-nav text-xs text-sage">
+                  {new Date(post.data.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                </span>
               </Link>
             ))}
           </div>

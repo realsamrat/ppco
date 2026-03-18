@@ -78,7 +78,7 @@ export const GoogleReviews: React.FC = () => {
                 {[...REVIEWS, ...REVIEWS].map((review, idx) => (
                     <div
                         key={idx}
-                        className="flex-shrink-0 w-[350px] bg-white p-5 rounded-lg shadow-sm border border-stone"
+                        className="flex-shrink-0 w-[350px] bg-white p-5 shadow-sm border border-stone"
                     >
                         <div className="flex items-center justify-between mb-3">
                             <div className="flex items-center gap-2">

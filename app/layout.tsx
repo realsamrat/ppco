@@ -9,6 +9,7 @@ import './globals.css'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { ScrollToTop } from '../components/ScrollToTop'
+import { PageTransition } from '../components/PageTransition'
 
 const copernicus = localFont({
   src: [
@@ -111,7 +112,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="min-h-screen flex flex-col font-body selection:bg-terracotta/20 selection:text-forest">
           <ScrollToTop />
           <Header />
-          <main className="flex-grow">{children}</main>
+          <main className="flex-grow">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer />
         </div>
       </body>

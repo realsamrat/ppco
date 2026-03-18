@@ -43,7 +43,7 @@ export default function BlogPage() {
                 href={`/blog/${post.slugs[0]}`}
                 className="group cursor-pointer flex flex-col h-full"
               >
-                <div className="aspect-[3/2] overflow-hidden mb-6 bg-stone">
+                <div className="aspect-[3/2] overflow-hidden mb-6 bg-stone rounded-[12px]">
                   {post.data.image && (
                     <img
                       src={post.data.image}

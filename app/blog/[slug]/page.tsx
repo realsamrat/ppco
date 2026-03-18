@@ -3,8 +3,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { source, getPageOgImage } from '../../../lib/source'
 import { getMDXComponents } from '../../../mdx-components'
-import { Button } from '../../../components/Button'
 import { BlogPostJsonLd, BreadcrumbJsonLd } from '../../../components/JsonLd'
+import { BlogHero } from '../../../components/BlogHero'
 
 export function generateStaticParams() {
   return source.getPages().map((page) => ({ slug: page.slugs[0] }))
@@ -19,19 +19,50 @@ export async function generateMetadata({
   const page = source.getPage([slug])
   if (!page) return {}
 
+  const siteUrl = 'https://portlandpictureco.com'
+  const canonicalUrl = `${siteUrl}/blog/${slug}`
+  const ogImage = getPageOgImage(page)
+
+  const baseKeywords = [
+    'portland photographer',
+    'portland photography',
+    'pacific northwest photographer',
+    'oregon photographer',
+    page.data.category.toLowerCase(),
+    'photography tips',
+  ]
+  const postKeywords = page.data.keywords ?? []
+  const allKeywords = [...new Set([...postKeywords, ...baseKeywords])]
+
   return {
     title: `${page.data.title} | Portland Picture Co. Blog`,
     description: page.data.description,
-    keywords: `${page.data.category.toLowerCase()}, photography tips, portland photographer`,
+    keywords: allKeywords,
+    authors: [{ name: page.data.author, url: siteUrl }],
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       type: 'article',
+      title: page.data.title,
+      description: page.data.description,
+      url: canonicalUrl,
+      siteName: 'Portland Picture Co.',
+      locale: 'en_US',
       publishedTime: new Date(page.data.date).toISOString(),
+      modifiedTime: new Date(page.data.date).toISOString(),
       section: page.data.category,
-      images: [{ url: getPageOgImage(page), width: 1200, height: 630 }],
+      authors: [page.data.author],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: page.data.title }],
     },
     twitter: {
       card: 'summary_large_image',
-      images: [getPageOgImage(page)],
+      title: page.data.title,
+      description: page.data.description,
+      images: [ogImage],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
     },
   }
 }
@@ -60,12 +91,16 @@ export default async function BlogPostPage({
 
   return (
     <div className="bg-white">
+
       <BlogPostJsonLd
         title={page.data.title}
         description={page.data.description}
         image={page.data.image ?? ''}
         datePublished={new Date(page.data.date).toISOString()}
         url={`/blog/${slug}`}
+        author={page.data.author}
+        keywords={page.data.keywords}
+        articleSection={page.data.category}
       />
       <BreadcrumbJsonLd
         items={[
@@ -75,53 +110,25 @@ export default async function BlogPostPage({
         ]}
       />
 
-      {/* Hero — constrained to content width, rounded card */}
-      <div className="pt-36 pb-12 bg-white">
-        <div className="container mx-auto px-6 max-w-3xl">
-          <div className="relative h-[480px] rounded-[30px] overflow-hidden">
-            {page.data.image && (
-              <img
-                src={page.data.image}
-                alt={page.data.title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            )}
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage:
-                  'linear-gradient(0deg, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0) 94%), linear-gradient(90deg, rgba(250,247,242,0.2) 0%, rgba(250,247,242,0.2) 100%)',
-              }}
-            />
-            <div className="absolute bottom-0 left-0 p-12 flex flex-col gap-3 max-w-[640px]">
-              <span className="font-nav text-sm font-semibold uppercase tracking-widest text-terracotta">
-                {page.data.category}
-              </span>
-              <h1 className="font-heading text-4xl md:text-5xl text-warmWhite leading-tight">
-                {page.data.title}
-              </h1>
-              <p className="font-nav text-sm font-semibold uppercase tracking-widest text-warmWhite/80">
-                {new Date(page.data.date).toLocaleDateString('en-US', {
-                  month: 'long',
-                  day: 'numeric',
-                  year: 'numeric',
-                })}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Hero — fixed, never affects document flow */}
+      <BlogHero
+        image={page.data.image}
+        category={page.data.category}
+        title={page.data.title}
+        formattedDate={new Date(page.data.date).toLocaleDateString('en-US', {
+          month: 'long',
+          day: 'numeric',
+          year: 'numeric',
+        })}
+        author={page.data.author}
+      />
+
 
       {/* MDX Content */}
-      <article className="pb-24 bg-white">
+      <article className="pt-12 pb-24 bg-white">
         <div className="container mx-auto px-6 max-w-3xl">
           <MDX components={getMDXComponents()} />
 
-          <div className="mt-16 pt-8 border-t border-driftwood">
-            <Link href="/blog">
-              <Button variant="secondary">← Back to All Posts</Button>
-            </Link>
-          </div>
         </div>
       </article>
 
@@ -139,7 +146,7 @@ export default async function BlogPostPage({
                   href={`/blog/${related.slugs[0]}`}
                   className="group cursor-pointer flex flex-col h-full"
                 >
-                  <div className="aspect-[3/2] overflow-hidden mb-6 bg-stone">
+                  <div className="aspect-[3/2] overflow-hidden mb-6 bg-stone rounded-[12px]">
                     {related.data.image && (
                       <img
                         src={related.data.image}

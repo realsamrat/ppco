@@ -187,6 +187,8 @@ interface BlogPostJsonLdProps {
   dateModified?: string;
   author?: string;
   url: string;
+  keywords?: string[];
+  articleSection?: string;
 }
 
 export const BlogPostJsonLd: React.FC<BlogPostJsonLdProps> = ({
@@ -195,24 +197,45 @@ export const BlogPostJsonLd: React.FC<BlogPostJsonLdProps> = ({
   image,
   datePublished,
   dateModified,
-  author = SITE_CONFIG.siteName,
+  author = 'Portland Picture Company',
   url,
+  keywords,
+  articleSection,
 }) => {
+  const absoluteImage = image.startsWith('http') ? image : `${SITE_CONFIG.siteUrl}${image}`;
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
+    '@id': `${SITE_CONFIG.siteUrl}${url}`,
     headline: title,
     description,
-    image: image.startsWith('http') ? image : `${SITE_CONFIG.siteUrl}${image}`,
+    image: {
+      '@type': 'ImageObject',
+      url: absoluteImage,
+      width: 1200,
+      height: 630,
+    },
     datePublished,
     dateModified: dateModified || datePublished,
-    author: { '@type': 'Organization', name: author, url: SITE_CONFIG.siteUrl },
+    author: {
+      '@type': 'Organization',
+      name: author,
+      url: SITE_CONFIG.siteUrl,
+      logo: { '@type': 'ImageObject', url: BUSINESS_INFO.logo },
+    },
     publisher: {
       '@type': 'Organization',
       name: SITE_CONFIG.siteName,
+      url: SITE_CONFIG.siteUrl,
       logo: { '@type': 'ImageObject', url: BUSINESS_INFO.logo },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_CONFIG.siteUrl}${url}` },
+    isPartOf: { '@type': 'Blog', '@id': `${SITE_CONFIG.siteUrl}/blog`, name: `${SITE_CONFIG.siteName} Blog` },
+    ...(keywords && keywords.length > 0 && { keywords: keywords.join(', ') }),
+    ...(articleSection && { articleSection }),
+    inLanguage: 'en-US',
+    copyrightHolder: { '@type': 'Organization', name: BUSINESS_INFO.name },
+    copyrightYear: new Date(datePublished).getFullYear(),
   };
 
   return <JsonLdScript schema={schema} />;

@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { NAV_ITEMS } from '../constants'
 import { IconMenu, IconClose } from './Icons'
 import { Button } from './Button'
-import { Logo } from './Logo'
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -28,8 +27,8 @@ export const Header: React.FC = () => {
       >
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex flex-col items-center group">
-            <Logo className="w-40 md:w-56 h-auto text-forest group-hover:text-terracotta transition-colors" />
+          <Link href="/">
+            <img src="/ppco_logo.svg" alt="Portland Picture Co." className="w-32 md:w-36 h-auto" />
           </Link>
 
           {/* Desktop Nav */}

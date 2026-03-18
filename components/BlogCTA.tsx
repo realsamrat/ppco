@@ -15,8 +15,8 @@ export const BlogCTA: React.FC<BlogCTAProps> = ({
 }) => {
   return (
     <div className="my-12 not-prose">
-      <div className="bg-linen border-l-4 border-terracotta px-8 py-10">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <div className="bg-linen border border-stone px-8 py-10">
+        <div className="flex flex-col gap-6">
           <div className="flex-1">
             <p className="font-nav text-xs font-bold uppercase tracking-widest text-terracotta mb-3">
               Portland Picture Company
@@ -28,7 +28,7 @@ export const BlogCTA: React.FC<BlogCTAProps> = ({
               {body}
             </p>
           </div>
-          <div className="shrink-0">
+          <div>
             <Link
               href={href}
               className="inline-flex items-center gap-3 bg-terracotta text-warmWhite font-nav text-xs font-bold uppercase tracking-widest px-8 py-4 hover:bg-terracotta-dark transition-colors"

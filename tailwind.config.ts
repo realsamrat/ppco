@@ -21,8 +21,8 @@ const config: Config = {
         stone: '#E8E4DD',
         driftwood: '#D4CFC5',
         terracotta: {
-          DEFAULT: '#C4705B',
-          dark: '#A85A47',
+          DEFAULT: '#E15B3D',
+          dark: '#C44D31',
         },
         gold: '#B8956E',
       },
