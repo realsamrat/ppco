@@ -27,7 +27,7 @@ const config: Config = {
         gold: '#B8956E',
       },
       fontFamily: {
-        heading: ['var(--font-playfair)', 'Playfair Display', 'serif'],
+        heading: ['var(--font-copernicus)', 'Georgia', 'serif'],
         body: ['var(--font-source-serif)', 'Source Serif Pro', 'serif'],
         nav: ['var(--font-montserrat)', 'Montserrat', 'sans-serif'],
         accent: ['var(--font-cormorant)', 'Cormorant Garamond', 'serif'],
