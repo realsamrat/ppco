@@ -1,4 +1,5 @@
 import type { MDXComponents } from 'mdx/types'
+import { BlogCTA } from './components/BlogCTA'
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -36,6 +37,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     a: (props) => (
       <a className="text-terracotta hover:text-terracotta-dark underline underline-offset-2 transition-colors" {...props} />
     ),
+    BlogCTA,
   }
 }
 
