@@ -12,12 +12,8 @@ import { ScrollToTop } from '../components/ScrollToTop'
 
 const copernicus = localFont({
   src: [
-    { path: '../public/fonts/Copernicus - Book.otf', weight: '400', style: 'normal' },
-    { path: '../public/fonts/Copernicus - Book Italic.otf', weight: '400', style: 'italic' },
-    { path: '../public/fonts/Copernicus - Medium.otf', weight: '500', style: 'normal' },
-    { path: '../public/fonts/Copernicus - Medium Italic.otf', weight: '500', style: 'italic' },
-    { path: '../public/fonts/Copernicus - SemiBold.otf', weight: '600', style: 'normal' },
-    { path: '../public/fonts/Copernicus - SemiBold Italic.otf', weight: '600', style: 'italic' },
+    { path: '../public/fonts/CopernicusNewCondTrial-070-BF6616044f8a3ab.otf', weight: '400', style: 'normal' },
+    { path: '../public/fonts/CopernicusNewCondTrial-090-BF6616044f92f03.otf', weight: '500', style: 'normal' },
   ],
   variable: '--font-copernicus',
   display: 'swap',
