@@ -1,0 +1,43 @@
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        forest: {
+          DEFAULT: '#161613',
+          dark: '#000000',
+          light: '#1A1A1A',
+        },
+        sage: '#757575',
+        mint: '#8FA89B',
+        cream: '#FAF9F7',
+        warmWhite: '#FFFFFF',
+        linen: '#F5F3EF',
+        stone: '#E8E4DD',
+        driftwood: '#D4CFC5',
+        terracotta: {
+          DEFAULT: '#C4705B',
+          dark: '#A85A47',
+        },
+        gold: '#B8956E',
+      },
+      fontFamily: {
+        heading: ['var(--font-playfair)', 'Playfair Display', 'serif'],
+        body: ['var(--font-source-serif)', 'Source Serif Pro', 'serif'],
+        nav: ['var(--font-montserrat)', 'Montserrat', 'sans-serif'],
+        accent: ['var(--font-cormorant)', 'Cormorant Garamond', 'serif'],
+      },
+      spacing: {
+        '128': '32rem',
+      },
+    },
+  },
+  plugins: [],
+}
+
+export default config

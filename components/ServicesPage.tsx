@@ -1,12 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ContactForm } from './ContactForm';
 import { Button } from './Button';
 import { IconCheck } from './Icons';
 import { ServiceCarousel } from './ServiceCarousel';
-import { SEO } from './SEO';
 import { BreadcrumbJsonLd } from './JsonLd';
-import { PAGE_SEO } from '../seo.config';
 import { GALLERY_DATA } from '../constants';
 
 const SERVICES_LIST = [
@@ -57,12 +55,6 @@ const SERVICES_LIST = [
 export const ServicesPage: React.FC = () => {
     return (
         <div className="bg-white">
-            <SEO
-                title={PAGE_SEO.services.title}
-                description={PAGE_SEO.services.description}
-                keywords={PAGE_SEO.services.keywords}
-                url="/services"
-            />
             <BreadcrumbJsonLd
                 items={[
                     { name: 'Home', url: '/' },
@@ -106,7 +98,7 @@ export const ServicesPage: React.FC = () => {
                                     </ul>
                                     <div className="flex flex-col sm:flex-row gap-4">
                                         <Button variant="primary">Inquire Now</Button>
-                                        <Link to={`/services/${service.id}`}>
+                                        <Link href={`/services/${service.id}`}>
                                             <Button variant="secondary">View Gallery</Button>
                                         </Link>
                                     </div>

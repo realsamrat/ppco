@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button } from './Button';
 import { GALLERY_DATA } from '../constants';
 
@@ -92,7 +92,7 @@ export const Hero: React.FC = () => {
                                 <p className="font-nav text-[10px] md:text-xs uppercase tracking-[3px] font-medium text-warmWhite/90 mb-6 drop-shadow-lg">
                                     {category.description}
                                 </p>
-                                <Link to={`/services/${category.id}`}>
+                                <Link href={`/services/${category.id}`}>
                                     <Button variant="primary" className="!bg-[#161613] !text-warmWhite hover:!bg-terracotta hover:!text-warmWhite border border-warmWhite/10 hover:border-terracotta !py-4 !px-8 text-xs font-bold tracking-widest transition-all duration-300 shadow-xl">
                                         View Gallery
                                     </Button>

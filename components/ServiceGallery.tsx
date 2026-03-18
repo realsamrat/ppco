@@ -1,6 +1,5 @@
 import React from 'react';
 import { ContactForm } from './ContactForm';
-import { SEO } from './SEO';
 import { ServiceJsonLd, ImageGalleryJsonLd, BreadcrumbJsonLd } from './JsonLd';
 import { SERVICES_SEO } from '../seo.config';
 
@@ -23,13 +22,6 @@ export const ServiceGallery: React.FC<ServiceGalleryProps> = ({ serviceName, her
         <div className="bg-white">
             {seoData && (
                 <>
-                    <SEO
-                        title={seoData.title}
-                        description={seoData.description}
-                        keywords={seoData.keywords}
-                        url={serviceUrl}
-                        image={heroImage}
-                    />
                     <ServiceJsonLd
                         name={`${serviceName} Photography`}
                         description={seoData.description}

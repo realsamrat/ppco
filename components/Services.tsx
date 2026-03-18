@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button } from './Button';
 import { GALLERY_DATA } from '../constants';
 
@@ -88,7 +88,7 @@ export const Services: React.FC = () => {
                                 <p className={`font-nav text-xs uppercase tracking-widest text-warmWhite/90 ${service.size === 'tall' ? 'mb-6' : 'mb-4'}`}>
                                     {service.description}
                                 </p>
-                                <Link to={`/services/${service.id}`}>
+                                <Link href={`/services/${service.id}`}>
                                     <Button variant="primary" className="!bg-warmWhite !text-forest hover:!bg-terracotta hover:!text-warmWhite !border-none">
                                         View Gallery
                                     </Button>

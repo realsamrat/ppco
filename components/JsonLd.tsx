@@ -1,6 +1,12 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { BUSINESS_INFO, SITE_CONFIG } from '../seo.config';
+
+const JsonLdScript = ({ schema }: { schema: object }) => (
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+  />
+);
 
 // Local Business Schema for Photography Studio
 export const LocalBusinessJsonLd: React.FC = () => {
@@ -51,11 +57,7 @@ export const LocalBusinessJsonLd: React.FC = () => {
     sameAs: BUSINESS_INFO.sameAs,
   };
 
-  return (
-    <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
-    </Helmet>
-  );
+  return <JsonLdScript schema={schema} />;
 };
 
 // Photography Business Schema (more specific)
@@ -65,7 +67,8 @@ export const PhotographyBusinessJsonLd: React.FC = () => {
     '@type': 'ProfessionalService',
     '@id': `${BUSINESS_INFO.url}/#photography-service`,
     name: BUSINESS_INFO.name,
-    description: 'Professional photography studio offering wedding, portrait, family, branding, headshot, and senior photography services in Portland, Oregon and the Pacific Northwest.',
+    description:
+      'Professional photography studio offering wedding, portrait, family, branding, headshot, and senior photography services in Portland, Oregon and the Pacific Northwest.',
     url: BUSINESS_INFO.url,
     logo: BUSINESS_INFO.logo,
     image: BUSINESS_INFO.image,
@@ -89,68 +92,19 @@ export const PhotographyBusinessJsonLd: React.FC = () => {
       '@type': 'OfferCatalog',
       name: 'Photography Services',
       itemListElement: [
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Wedding Photography',
-            description: 'Full-day wedding photography coverage with a documentary approach, capturing authentic moments and emotions.',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Engagement Photography',
-            description: '90-minute engagement photo sessions at beautiful Portland locations.',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Family Photography',
-            description: 'Natural, candid family portrait sessions in outdoor Portland locations.',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Branding & Corporate Photography',
-            description: 'Professional branding photography including headshots, team photos, and lifestyle imagery.',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Professional Headshots',
-            description: 'Natural light headshot photography for professionals, executives, and actors.',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Senior Portrait Photography',
-            description: 'Authentic high school senior portraits with multiple locations and outfit changes.',
-          },
-        },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Wedding Photography', description: 'Full-day wedding photography coverage with a documentary approach.' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Engagement Photography', description: '90-minute engagement photo sessions at beautiful Portland locations.' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Family Photography', description: 'Natural, candid family portrait sessions in outdoor Portland locations.' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Branding & Corporate Photography', description: 'Professional branding photography including headshots, team photos, and lifestyle imagery.' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Professional Headshots', description: 'Natural light headshot photography for professionals, executives, and actors.' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Senior Portrait Photography', description: 'Authentic high school senior portraits with multiple locations and outfit changes.' } },
       ],
     },
-    areaServed: BUSINESS_INFO.areaServed.map((area) => ({
-      '@type': 'City',
-      name: area,
-    })),
+    areaServed: BUSINESS_INFO.areaServed.map((area) => ({ '@type': 'City', name: area })),
     sameAs: BUSINESS_INFO.sameAs,
   };
 
-  return (
-    <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
-    </Helmet>
-  );
+  return <JsonLdScript schema={schema} />;
 };
 
 // Organization Schema
@@ -161,10 +115,7 @@ export const OrganizationJsonLd: React.FC = () => {
     '@id': `${BUSINESS_INFO.url}/#organization`,
     name: BUSINESS_INFO.name,
     url: BUSINESS_INFO.url,
-    logo: {
-      '@type': 'ImageObject',
-      url: BUSINESS_INFO.logo,
-    },
+    logo: { '@type': 'ImageObject', url: BUSINESS_INFO.logo },
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: BUSINESS_INFO.telephone,
@@ -176,11 +127,7 @@ export const OrganizationJsonLd: React.FC = () => {
     sameAs: BUSINESS_INFO.sameAs,
   };
 
-  return (
-    <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
-    </Helmet>
-  );
+  return <JsonLdScript schema={schema} />;
 };
 
 // Website Schema with SearchAction
@@ -192,9 +139,7 @@ export const WebsiteJsonLd: React.FC = () => {
     name: SITE_CONFIG.siteName,
     url: SITE_CONFIG.siteUrl,
     description: SITE_CONFIG.defaultDescription,
-    publisher: {
-      '@id': `${BUSINESS_INFO.url}/#organization`,
-    },
+    publisher: { '@id': `${BUSINESS_INFO.url}/#organization` },
     potentialAction: {
       '@type': 'SearchAction',
       target: {
@@ -205,11 +150,7 @@ export const WebsiteJsonLd: React.FC = () => {
     },
   };
 
-  return (
-    <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
-    </Helmet>
-  );
+  return <JsonLdScript schema={schema} />;
 };
 
 // Breadcrumb Schema
@@ -234,11 +175,7 @@ export const BreadcrumbJsonLd: React.FC<BreadcrumbJsonLdProps> = ({ items }) => 
     })),
   };
 
-  return (
-    <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
-    </Helmet>
-  );
+  return <JsonLdScript schema={schema} />;
 };
 
 // Blog Post / Article Schema
@@ -265,34 +202,20 @@ export const BlogPostJsonLd: React.FC<BlogPostJsonLdProps> = ({
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: title,
-    description: description,
+    description,
     image: image.startsWith('http') ? image : `${SITE_CONFIG.siteUrl}${image}`,
-    datePublished: datePublished,
+    datePublished,
     dateModified: dateModified || datePublished,
-    author: {
-      '@type': 'Organization',
-      name: author,
-      url: SITE_CONFIG.siteUrl,
-    },
+    author: { '@type': 'Organization', name: author, url: SITE_CONFIG.siteUrl },
     publisher: {
       '@type': 'Organization',
       name: SITE_CONFIG.siteName,
-      logo: {
-        '@type': 'ImageObject',
-        url: BUSINESS_INFO.logo,
-      },
+      logo: { '@type': 'ImageObject', url: BUSINESS_INFO.logo },
     },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `${SITE_CONFIG.siteUrl}${url}`,
-    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_CONFIG.siteUrl}${url}` },
   };
 
-  return (
-    <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
-    </Helmet>
-  );
+  return <JsonLdScript schema={schema} />;
 };
 
 // Service Page Schema
@@ -303,35 +226,19 @@ interface ServiceJsonLdProps {
   url: string;
 }
 
-export const ServiceJsonLd: React.FC<ServiceJsonLdProps> = ({
-  name,
-  description,
-  image,
-  url,
-}) => {
+export const ServiceJsonLd: React.FC<ServiceJsonLdProps> = ({ name, description, image, url }) => {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: name,
-    description: description,
-    provider: {
-      '@type': 'LocalBusiness',
-      name: BUSINESS_INFO.name,
-      url: BUSINESS_INFO.url,
-    },
-    areaServed: {
-      '@type': 'City',
-      name: 'Portland, Oregon',
-    },
+    name,
+    description,
+    provider: { '@type': 'LocalBusiness', name: BUSINESS_INFO.name, url: BUSINESS_INFO.url },
+    areaServed: { '@type': 'City', name: 'Portland, Oregon' },
     ...(image && { image: image.startsWith('http') ? image : `${SITE_CONFIG.siteUrl}${image}` }),
     url: `${SITE_CONFIG.siteUrl}${url}`,
   };
 
-  return (
-    <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
-    </Helmet>
-  );
+  return <JsonLdScript schema={schema} />;
 };
 
 // Image Gallery Schema
@@ -351,24 +258,17 @@ export const ImageGalleryJsonLd: React.FC<ImageGalleryJsonLdProps> = ({
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'ImageGallery',
-    name: name,
-    description: description,
+    name,
+    description,
     url: `${SITE_CONFIG.siteUrl}${url}`,
     image: images.slice(0, 10).map((img) => ({
       '@type': 'ImageObject',
       url: img.startsWith('http') ? img : `${SITE_CONFIG.siteUrl}${img}`,
     })),
-    creator: {
-      '@type': 'Organization',
-      name: BUSINESS_INFO.name,
-    },
+    creator: { '@type': 'Organization', name: BUSINESS_INFO.name },
   };
 
-  return (
-    <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
-    </Helmet>
-  );
+  return <JsonLdScript schema={schema} />;
 };
 
 // FAQ Schema
@@ -388,18 +288,11 @@ export const FAQJsonLd: React.FC<FAQJsonLdProps> = ({ faqs }) => {
     mainEntity: faqs.map((faq) => ({
       '@type': 'Question',
       name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
     })),
   };
 
-  return (
-    <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
-    </Helmet>
-  );
+  return <JsonLdScript schema={schema} />;
 };
 
 // Contact Page Schema
@@ -426,9 +319,5 @@ export const ContactPageJsonLd: React.FC = () => {
     },
   };
 
-  return (
-    <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
-    </Helmet>
-  );
+  return <JsonLdScript schema={schema} />;
 };
