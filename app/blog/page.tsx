@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import Link from 'next/link'
 import { source } from '../../lib/source'
 import { BreadcrumbJsonLd } from '../../components/JsonLd'
@@ -36,7 +37,9 @@ export default function BlogPage() {
           { name: 'Blog', url: '/blog' },
         ]}
       />
-      <BlogListClient posts={serializedPosts} categories={categories} />
+      <Suspense>
+        <BlogListClient posts={serializedPosts} categories={categories} />
+      </Suspense>
     </div>
   )
 }
