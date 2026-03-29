@@ -5,7 +5,6 @@ import { source, getPageOgImage } from '../../../lib/source'
 import { getMDXComponents } from '../../../mdx-components'
 import { BlogPostJsonLd, BreadcrumbJsonLd } from '../../../components/JsonLd'
 import { BlogHero } from '../../../components/BlogHero'
-import { ProgressiveBlur } from '../../../components/ProgressiveBlur'
 
 export function generateStaticParams() {
   return source.getPages().map((page) => ({ slug: page.slugs[0] }))
@@ -99,16 +98,6 @@ export default async function BlogPostPage({
 
   return (
     <div className="bg-cream">
-
-      {/* Fixed fade at screen bottom */}
-      <div
-        className="fixed bottom-0 left-0 right-0 pointer-events-none"
-        style={{
-          zIndex: 40,
-          height: '200px',
-          background: 'linear-gradient(to bottom, transparent 0%, #FAF9F7 100%)',
-        }}
-      />
 
       <BlogPostJsonLd
         title={page.data.title}
@@ -275,6 +264,7 @@ export default async function BlogPostPage({
           </div>
         </section>
       )}
+
     </div>
   )
 }

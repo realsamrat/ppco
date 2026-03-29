@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 
 interface Post {
   slug: string
@@ -19,8 +20,16 @@ interface BlogListClientProps {
 }
 
 export function BlogListClient({ posts, categories }: BlogListClientProps) {
-  const [activeCategory, setActiveCategory] = useState('All')
+  const searchParams = useSearchParams()
+  const categoryParam = searchParams.get('category')
+  const [activeCategory, setActiveCategory] = useState(categoryParam || 'All')
   const [search, setSearch] = useState('')
+
+  useEffect(() => {
+    if (categoryParam && categories.includes(categoryParam)) {
+      setActiveCategory(categoryParam)
+    }
+  }, [categoryParam, categories])
 
   const filtered = useMemo(() => {
     let result = posts

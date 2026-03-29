@@ -9,6 +9,7 @@ import './globals.css'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { ScrollToTop } from '../components/ScrollToTop'
+import { PageProgressiveBlur } from '../components/BlogBottomFade'
 import { PageTransition } from '../components/PageTransition'
 import { cn } from "@/lib/utils";
 
@@ -118,13 +119,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={cn(copernicus.variable, montserrat.variable, sourceSerif4.variable, cormorantGaramond.variable, inter.variable, "font-sans", geist.variable)}
     >
       <body className={`bg-cream text-forest-light antialiased ${inter.className}`}>
-        <div className="min-h-screen flex flex-col selection:bg-terracotta/20 selection:text-forest">
+        <div className="relative min-h-screen flex flex-col selection:bg-terracotta/20 selection:text-forest">
           <ScrollToTop />
           <Header />
           <main className="flex-grow">
             <PageTransition>{children}</PageTransition>
           </main>
           <Footer />
+          <PageProgressiveBlur />
         </div>
       </body>
     </html>
