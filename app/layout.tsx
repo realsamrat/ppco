@@ -9,6 +9,7 @@ import './globals.css'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { ScrollToTop } from '../components/ScrollToTop'
+import { ScrollbarAutoHide } from '../components/ScrollbarAutoHide'
 import { PageProgressiveBlur } from '../components/BlogBottomFade'
 import { PageTransition } from '../components/PageTransition'
 import { cn } from "@/lib/utils";
@@ -121,6 +122,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`bg-cream text-forest-light antialiased ${inter.className}`}>
         <div className="relative min-h-screen flex flex-col selection:bg-terracotta/20 selection:text-forest">
           <ScrollToTop />
+          <ScrollbarAutoHide />
           <Header />
           <main className="flex-grow">
             <PageTransition>{children}</PageTransition>

@@ -1,61 +1,80 @@
-import React from 'react';
-import { NAV_ITEMS } from '../constants';
-import { IconInstagram } from './Icons';
-import { Logo } from './Logo';
+import React from 'react'
+import Link from 'next/link'
+import { CopyEmailTooltip } from './CopyEmailTooltip'
+
+const FOOTER_LINKS = {
+  Services: [
+    { label: 'Weddings', href: '/services/weddings' },
+    { label: 'Engagements', href: '/services/engagements' },
+    { label: 'Families', href: '/services/families' },
+    { label: 'Headshots', href: '/services/headshots' },
+    { label: 'Branding', href: '/services/branding' },
+    { label: 'Seniors', href: '/services/seniors' },
+  ],
+  Company: [
+    { label: 'About', href: '/#about' },
+    { label: 'Portfolio', href: '/portfolio' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contact', href: '/contact' },
+  ],
+  Connect: [
+    { label: 'Instagram', href: '#' },
+    { label: 'Facebook', href: '#' },
+    { label: 'Pinterest', href: '#' },
+    { label: 'Email Us', href: 'mailto:hello@portlandpictureco.com' },
+  ],
+}
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-forest text-cream pt-24 pb-12">
-      <div className="container mx-auto px-6 lg:px-12 max-w-[1290px]">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 mb-24">
-
-          {/* Brand */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <div className="flex flex-col items-center lg:items-start mb-2">
-              <Logo variant="light" className="w-56 h-auto mb-4" />
-            </div>
-            <p className="text-sage leading-relaxed max-w-xs">
-              Capturing authentic moments for weddings, families, brands, and life's milestones across the Pacific Northwest.
+    <footer className="border-t border-driftwood">
+      <div className="max-w-[1344px] mx-auto px-6 md:px-12 py-14">
+        {/* Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8">
+          {/* Logo column */}
+          <div className="col-span-2 md:col-span-1">
+            <Link href="/">
+              <img src="/ppco_logo.svg" alt="Portland Picture Co." className="w-28 h-auto mb-6" />
+            </Link>
+            <p className="text-[13px] leading-[1.5] text-sage max-w-[200px] mb-4">
+              Capturing authentic moments across the Pacific Northwest.
             </p>
+            <CopyEmailTooltip />
           </div>
 
-          {/* Nav */}
-          <div className="flex flex-col items-center justify-start pt-4">
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
-              {NAV_ITEMS.map(item => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-sm font-medium uppercase tracking-widest text-driftwood hover:text-terracotta transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))}
+          {/* Link columns */}
+          {Object.entries(FOOTER_LINKS).map(([title, links]) => (
+            <div key={title}>
+              <h4 className="text-[13px] font-medium text-forest tracking-[-0.01em] leading-[1.5] mb-6">
+                {title}
+              </h4>
+              <ul className="flex flex-col gap-[2px]">
+                {links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-[13px] text-sage leading-[1.5] min-h-[28px] flex items-center hover:text-forest transition-colors duration-100"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-
-          {/* Contact / Social */}
-          <div className="flex flex-col items-center lg:items-end lg:text-right pt-4">
-            <h4 className="text-sm font-medium uppercase tracking-widest text-mint mb-6">Get In Touch</h4>
-            <a href="mailto:hello@portlandpictureco.com" className="text-xl text-warmWhite hover:text-terracotta transition-colors mb-6 decoration-transparent border-b border-transparent hover:border-terracotta pb-1">
-              hello@portlandpictureco.com
-            </a>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full border border-sage flex items-center justify-center text-cream hover:bg-terracotta hover:border-terracotta transition-all">
-                <IconInstagram />
-              </a>
-            </div>
-          </div>
-
+          ))}
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-white/10 pt-12 text-center">
-          <p className="text-xs text-sage tracking-wider">
-            © {new Date().getFullYear()} Portland Picture Co. | Designed with ❤️ in Oregon
+        {/* Legal row */}
+        <div className="mt-20 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="flex gap-5">
+            <Link href="#" className="text-[13px] text-driftwood hover:text-sage transition-colors duration-100">Privacy</Link>
+            <Link href="#" className="text-[13px] text-driftwood hover:text-sage transition-colors duration-100">Terms</Link>
+          </div>
+          <p className="text-[13px] text-driftwood">
+            © {new Date().getFullYear()} Portland Picture Co.
           </p>
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}

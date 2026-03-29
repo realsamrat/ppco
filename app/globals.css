@@ -2,16 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom scrollbar to match aesthetic */
+@keyframes tooltipOpen {
+  from { opacity: 0; transform: translateX(-50%) scale(0.9); }
+  to { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+@keyframes tooltipClose {
+  from { opacity: 1; transform: translateX(-50%) scale(1); }
+  to { opacity: 0; transform: translateX(-50%) scale(0.9); }
+}
+
+/* Custom scrollbar — auto-hide when not scrolling */
+html {
+  overscroll-behavior-y: none;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+html.is-scrolling {
+  scrollbar-color: #D4CFC5 transparent;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF9F7;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4CFC5;
+  background: transparent;
   border-radius: 4px;
+  transition: background 0.3s;
+}
+html.is-scrolling::-webkit-scrollbar-thumb {
+  background: #D4CFC5;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #8FA89B;

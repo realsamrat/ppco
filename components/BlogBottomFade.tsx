@@ -36,8 +36,8 @@ export function PageProgressiveBlur() {
       className="fixed bottom-0 left-0 right-0 z-40 pointer-events-none"
       style={{ opacity, transition: 'opacity 0.15s ease-out' }}
     >
-      <div className="relative w-full" style={{ height: '200px' }}>
-        <ProgressiveBlur position="bottom" height="200px" />
+      <div className="relative w-full" style={{ height: '120px' }}>
+        <ProgressiveBlur position="bottom" height="120px" />
       </div>
     </div>
   )

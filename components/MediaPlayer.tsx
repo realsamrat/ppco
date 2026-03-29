@@ -185,9 +185,17 @@ export default function MediaPlayer({
 
   const toggleFullscreen = useCallback(() => {
     const c = containerRef.current
+    const v = videoRef.current
     if (!c) return
-    if (!document.fullscreenElement) c.requestFullscreen()
-    else document.exitFullscreen()
+
+    if (document.fullscreenElement) {
+      document.exitFullscreen()
+    } else if (c.requestFullscreen) {
+      c.requestFullscreen()
+    } else if (v && (v as any).webkitEnterFullscreen) {
+      // iOS Safari fallback — fullscreen on the video element directly
+      (v as any).webkitEnterFullscreen()
+    }
   }, [])
 
   const togglePip = useCallback(async () => {
@@ -265,7 +273,11 @@ export default function MediaPlayer({
   useEffect(() => {
     const onChange = () => setIsFullscreen(!!document.fullscreenElement)
     document.addEventListener('fullscreenchange', onChange)
-    return () => document.removeEventListener('fullscreenchange', onChange)
+    document.addEventListener('webkitfullscreenchange', onChange)
+    return () => {
+      document.removeEventListener('fullscreenchange', onChange)
+      document.removeEventListener('webkitfullscreenchange', onChange)
+    }
   }, [])
 
   // --- Keyboard ---
