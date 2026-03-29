@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useRef } from 'react';
+import { motion } from 'motion/react';
 import { Button } from './Button';
 
 const IMAGES = [
@@ -48,20 +49,24 @@ export const CarouselCTA: React.FC = () => {
                 {/* Left Side - Image Carousel (Full Bleed) */}
                 <div className="w-full lg:w-[65%] relative group h-[500px] lg:h-[700px] py-12 lg:py-24">
                     {/* Navigation Buttons */}
-                    <button
+                    <motion.button
                         onClick={() => scroll('left')}
                         className="absolute left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-forest hover:bg-terracotta hover:text-white transition-all shadow-lg opacity-0 group-hover:opacity-100"
                         aria-label="Scroll left"
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ ease: "easeOut", duration: 0.15 }}
                     >
                         <ArrowLeft />
-                    </button>
-                    <button
+                    </motion.button>
+                    <motion.button
                         onClick={() => scroll('right')}
                         className="absolute right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-forest hover:bg-terracotta hover:text-white transition-all shadow-lg opacity-0 group-hover:opacity-100"
                         aria-label="Scroll right"
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ ease: "easeOut", duration: 0.15 }}
                     >
                         <ArrowRight />
-                    </button>
+                    </motion.button>
 
                     {/* Images Container */}
                     <div
@@ -93,7 +98,7 @@ export const CarouselCTA: React.FC = () => {
                         project now
                     </h2>
 
-                    <p className="font-body text-forest-light leading-relaxed mb-10 max-w-md">
+                    <p className="text-forest-light leading-relaxed mb-10 max-w-md">
                         Ready to create something extraordinary? Tell us about your vision, and let's start planning your perfect session.
                     </p>
 

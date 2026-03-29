@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { motion } from 'motion/react'
 import { IconChevronDown } from './Icons'
 
 interface AccordionItemProps {
@@ -13,12 +14,14 @@ interface AccordionItemProps {
 const AccordionItem: React.FC<AccordionItemProps> = ({ title, content, isOpen, onClick }) => {
   return (
     <div className="border-b border-driftwood">
-      <button
+      <motion.button
         className="w-full flex items-center justify-between py-6 text-left group"
         onClick={onClick}
+        whileTap={{ scale: 0.95 }}
+        transition={{ ease: "easeOut", duration: 0.15 }}
       >
         <span
-          className={`font-nav text-sm font-medium uppercase tracking-widest transition-colors duration-200 ${
+          className={`text-sm font-medium uppercase tracking-widest transition-colors duration-200 ${
             isOpen ? 'text-terracotta' : 'text-forest group-hover:text-terracotta'
           }`}
         >
@@ -29,13 +32,13 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ title, content, isOpen, o
         >
           <IconChevronDown className="w-5 h-5" />
         </div>
-      </button>
+      </motion.button>
       <div
         className={`overflow-hidden transition-all duration-500 ease-in-out ${
           isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="pb-8 text-forest-light leading-relaxed font-body">{content}</div>
+        <div className="pb-8 text-forest-light leading-relaxed">{content}</div>
       </div>
     </div>
   )

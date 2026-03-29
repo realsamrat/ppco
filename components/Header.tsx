@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { motion } from 'motion/react'
 import { NAV_ITEMS } from '../constants'
 import { IconMenu, IconClose } from './Icons'
 import { Button } from './Button'
@@ -18,11 +19,27 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Disable body scroll when mobile menu is open (no layout shift)
+  useEffect(() => {
+    if (mobileOpen) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+      document.body.style.overflow = 'hidden'
+      document.body.style.paddingRight = `${scrollbarWidth}px`
+    } else {
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+    }
+  }, [mobileOpen])
+
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-cream/95 backdrop-blur-sm ${
-          isScrolled ? 'py-2 shadow-md' : 'py-1 lg:py-2'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-black/10 ${
+          isScrolled ? 'py-2 bg-cream/85 backdrop-blur-xl' : 'py-1 lg:py-2 bg-cream/85 backdrop-blur-xl'
         }`}
       >
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 flex items-center justify-between">
@@ -37,64 +54,50 @@ export const Header: React.FC = () => {
               <Link
                 key={item.label}
                 href={item.href}
-                className="font-nav text-[13px] font-medium uppercase tracking-[2px] text-forest relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-terracotta hover:text-terracotta hover:after:w-full after:transition-all after:duration-300 py-2"
+                className="text-[14px] font-medium text-forest hover:text-terracotta transition-colors py-2"
               >
                 {item.label}
               </Link>
             ))}
-            <Button variant="primary" className="ml-4 !py-3 !px-6 text-xs">
+            <Button variant="primary" className="ml-4 !py-2.5 !px-5 !text-[13px] !tracking-normal !normal-case">
               Book Now
             </Button>
           </nav>
 
           {/* Mobile Toggle */}
-          <button
+          <motion.button
             className="lg:hidden text-forest p-2"
-            onClick={() => setMobileOpen(true)}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            whileTap={{ scale: 0.95 }}
+            transition={{ ease: 'easeOut', duration: 0.15 }}
           >
-            <IconMenu />
-          </button>
+            {mobileOpen ? <IconClose /> : <IconMenu />}
+          </motion.button>
         </div>
       </header>
 
-      {/* Mobile Drawer Overlay */}
-      <div
-        className={`fixed inset-0 z-[60] bg-forest/50 transition-opacity duration-500 ${
-          mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-        onClick={() => setMobileOpen(false)}
-      />
-
-      {/* Mobile Drawer Content */}
-      <div
-        className={`fixed top-0 right-0 bottom-0 z-[70] w-full max-w-sm bg-cream p-8 shadow-2xl overflow-y-auto transform transition-transform duration-500 ease-in-out ${
-          mobileOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        <div className="flex justify-end mb-12">
-          <button
-            onClick={() => setMobileOpen(false)}
-            className="text-forest hover:text-terracotta"
-          >
-            <IconClose />
-          </button>
+      {/* Mobile Fullscreen Menu */}
+      {mobileOpen && (
+        <div className="fixed inset-0 z-40" style={{ backgroundColor: 'rgba(250, 249, 247, 0.55)', WebkitBackdropFilter: 'blur(24px)', backdropFilter: 'blur(24px)' }}>
+          <nav className="flex flex-col px-8 pt-24">
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="text-[28px] font-medium text-forest hover:text-terracotta transition-colors py-3"
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="mt-10">
+              <Button variant="primary" className="!tracking-normal !normal-case" onClick={() => setMobileOpen(false)}>
+                Book Your Session
+              </Button>
+            </div>
+          </nav>
         </div>
-        <nav className="flex flex-col gap-6">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="font-nav text-lg font-medium uppercase tracking-widest text-forest border-b border-driftwood pb-4 hover:text-terracotta transition-colors"
-              onClick={() => setMobileOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <Button variant="primary" className="mt-8 w-full">
-            Book Your Session
-          </Button>
-        </nav>
-      </div>
+      )}
     </>
   )
 }

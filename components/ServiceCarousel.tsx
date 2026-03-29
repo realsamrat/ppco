@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useRef } from 'react'
+import { motion } from 'motion/react'
 
 interface ServiceCarouselProps {
   images: string[]
@@ -54,20 +55,24 @@ export const ServiceCarousel: React.FC<ServiceCarouselProps> = ({ images }) => {
   return (
     <div className="relative group h-full w-full">
       {/* Navigation Buttons */}
-      <button
+      <motion.button
         onClick={() => scroll('left')}
         className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-forest hover:bg-terracotta hover:text-white transition-all shadow-lg opacity-0 group-hover:opacity-100"
         aria-label="Scroll left"
+        whileTap={{ scale: 0.95 }}
+        transition={{ ease: "easeOut", duration: 0.15 }}
       >
         <ArrowLeft />
-      </button>
-      <button
+      </motion.button>
+      <motion.button
         onClick={() => scroll('right')}
         className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-forest hover:bg-terracotta hover:text-white transition-all shadow-lg opacity-0 group-hover:opacity-100"
         aria-label="Scroll right"
+        whileTap={{ scale: 0.95 }}
+        transition={{ ease: "easeOut", duration: 0.15 }}
       >
         <ArrowRight />
-      </button>
+      </motion.button>
 
       {/* Images Container */}
       <div

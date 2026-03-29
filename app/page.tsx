@@ -41,7 +41,7 @@ export default function HomePage() {
           <h2 className="font-heading text-3xl md:text-4xl text-forest mb-8 leading-snug">
             Portland's premiere photography studio for individuals, companies, and celebrations.
           </h2>
-          <p className="font-body text-lg text-forest-light leading-relaxed mb-8">
+          <p className="text-lg text-forest-light leading-relaxed mb-8">
             From corporate headshots to wedding moments, family portraits to brand imagery—we craft
             visual stories that resonate. Our approach blends artistry with authenticity, creating
             timeless photographs that capture who you are and what you do.
@@ -79,15 +79,15 @@ export default function HomePage() {
                   </div>
                   <div className="text-center">
                     <h3 className="font-heading text-2xl text-forest mb-1">{person.name}</h3>
-                    <span className="font-nav text-xs font-bold uppercase tracking-widest text-sage mb-4 block">
+                    <span className="text-xs font-bold uppercase tracking-widest text-sage mb-4 block">
                       {person.role}
                     </span>
-                    <p className="font-body text-sm text-forest-light mb-6 leading-relaxed">{person.bio}</p>
+                    <p className="text-sm text-forest-light mb-6 leading-relaxed">{person.bio}</p>
                     <ul className="space-y-2 mb-6">
                       {person.credentials.map((cred, i) => (
                         <li key={i} className="flex items-center justify-center gap-2">
                           <IconCheck className="w-4 h-4 text-terracotta flex-shrink-0" />
-                          <span className="font-nav text-xs text-forest-light">{cred}</span>
+                          <span className="text-xs text-forest-light">{cred}</span>
                         </li>
                       ))}
                     </ul>
@@ -117,7 +117,7 @@ export default function HomePage() {
               <div className="absolute top-8 left-8 w-full h-full border-2 border-driftwood z-0 hidden md:block"></div>
             </div>
             <div className="order-1 lg:order-2">
-              <h4 className="font-nav text-sm font-bold uppercase tracking-widest text-sage mb-4">
+              <h4 className="text-sm font-bold uppercase tracking-widest text-sage mb-4">
                 Our Process
               </h4>
               <h2 className="font-heading text-4xl md:text-5xl text-forest mb-8">
@@ -155,7 +155,7 @@ export default function HomePage() {
           <h2 className="font-heading text-5xl md:text-7xl text-warmWhite mb-6 drop-shadow-lg">
             Portland's Best Portrait Studio
           </h2>
-          <p className="font-body text-lg md:text-xl text-warmWhite/90 mb-10 leading-relaxed max-w-2xl mx-auto drop-shadow-md">
+          <p className="text-lg md:text-xl text-warmWhite/90 mb-10 leading-relaxed max-w-2xl mx-auto drop-shadow-md">
             From professional headshots to family milestones, we capture the authentic moments that
             tell your unique story.
           </p>
@@ -170,14 +170,14 @@ export default function HomePage() {
         <div className="container mx-auto px-6 max-w-[1290px]">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h4 className="font-nav text-sm font-bold uppercase tracking-widest text-sage mb-2">
+              <h4 className="text-sm font-bold uppercase tracking-widest text-sage mb-2">
                 The Journal
               </h4>
               <h2 className="font-heading text-4xl text-forest">Recent Stories</h2>
             </div>
             <Link
               href="/blog"
-              className="hidden md:block font-nav text-sm font-bold uppercase tracking-widest text-terracotta hover:text-forest transition-colors border-b border-terracotta pb-1"
+              className="hidden md:block text-sm font-bold uppercase tracking-widest text-terracotta hover:text-forest transition-colors border-b border-terracotta pb-1"
             >
               View All Posts
             </Link>
@@ -195,16 +195,16 @@ export default function HomePage() {
                     />
                   )}
                 </div>
-                <span className="font-nav text-xs font-bold uppercase tracking-widest text-terracotta mb-3 block">
+                <span className="text-xs font-bold uppercase tracking-widest text-terracotta mb-3 block">
                   {post.data.category}
                 </span>
                 <h3 className="font-heading text-2xl text-forest mb-3 group-hover:text-terracotta transition-colors">
                   {post.data.title}
                 </h3>
-                <p className="font-body text-forest-light text-sm leading-relaxed mb-4 flex-grow">
+                <p className="text-forest-light text-sm leading-relaxed mb-4 flex-grow">
                   {post.data.description}
                 </p>
-                <span className="font-nav text-xs text-sage">
+                <span className="text-xs text-sage">
                   {new Date(post.data.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                 </span>
               </Link>
@@ -223,7 +223,7 @@ export default function HomePage() {
             <div className="lg:col-span-5">
               <div className="sticky top-32">
                 <h2 className="font-heading text-4xl text-forest mb-6">Common Questions</h2>
-                <p className="font-body text-forest-light mb-8">
+                <p className="text-forest-light mb-8">
                   Planning a session can feel overwhelming, but we are here to guide you every step
                   of the way.
                 </p>

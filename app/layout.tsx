@@ -1,15 +1,18 @@
 import type { Metadata } from 'next'
 import {
   Cormorant_Garamond,
+  Inter,
   Montserrat,
-  Source_Serif_4,
-} from 'next/font/google'
+  Source_Serif_4, Geist } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { ScrollToTop } from '../components/ScrollToTop'
 import { PageTransition } from '../components/PageTransition'
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const copernicus = localFont({
   src: [
@@ -32,6 +35,12 @@ const sourceSerif4 = Source_Serif_4({
   weight: ['400', '600'],
   style: ['normal', 'italic'],
   variable: '--font-source-serif',
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -106,10 +115,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${copernicus.variable} ${montserrat.variable} ${sourceSerif4.variable} ${cormorantGaramond.variable}`}
+      className={cn(copernicus.variable, montserrat.variable, sourceSerif4.variable, cormorantGaramond.variable, inter.variable, "font-sans", geist.variable)}
     >
-      <body className="bg-cream text-forest-light antialiased">
-        <div className="min-h-screen flex flex-col font-body selection:bg-terracotta/20 selection:text-forest">
+      <body className={`bg-cream text-forest-light antialiased ${inter.className}`}>
+        <div className="min-h-screen flex flex-col selection:bg-terracotta/20 selection:text-forest">
           <ScrollToTop />
           <Header />
           <main className="flex-grow">

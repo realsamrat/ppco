@@ -53,13 +53,13 @@ export const Services: React.FC = () => {
         <section id="services" className="py-24 md:py-32 bg-gradient-to-b from-linen to-warmWhite">
             <div className="container mx-auto px-6 max-w-[1290px]">
                 <div className="text-center mb-12">
-                    <h4 className="font-nav text-sm font-bold uppercase tracking-widest text-sage mb-4">
+                    <h4 className="text-sm font-bold uppercase tracking-widest text-sage mb-4">
                         Our Specialties
                     </h4>
                     <h2 className="font-heading text-4xl md:text-5xl text-forest mb-4">
                         Select Your Service
                     </h2>
-                    <p className="font-body text-lg text-forest-light max-w-2xl mx-auto">
+                    <p className="text-lg text-forest-light max-w-2xl mx-auto">
                         From intimate moments to professional branding, we specialize in capturing what matters most to you.
                     </p>
                 </div>
@@ -85,7 +85,7 @@ export const Services: React.FC = () => {
                                 <h3 className={`font-heading text-warmWhite mb-2 ${service.size === 'tall' ? 'text-3xl' : 'text-2xl'}`}>
                                     {service.title}
                                 </h3>
-                                <p className={`font-nav text-xs uppercase tracking-widest text-warmWhite/90 ${service.size === 'tall' ? 'mb-6' : 'mb-4'}`}>
+                                <p className={`text-xs uppercase tracking-widest text-warmWhite/90 ${service.size === 'tall' ? 'mb-6' : 'mb-4'}`}>
                                     {service.description}
                                 </p>
                                 <Link href={`/services/${service.id}`}>

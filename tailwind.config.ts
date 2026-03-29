@@ -28,8 +28,8 @@ const config: Config = {
       },
       fontFamily: {
         heading: ['var(--font-copernicus)', 'Georgia', 'serif'],
-        body: ['var(--font-source-serif)', 'Source Serif Pro', 'serif'],
-        nav: ['var(--font-montserrat)', 'Montserrat', 'sans-serif'],
+        body: ['var(--font-inter)', 'Inter', '-apple-system', 'system-ui', 'sans-serif'],
+        nav: ['var(--font-inter)', 'Inter', '-apple-system', 'system-ui', 'sans-serif'],
         accent: ['var(--font-cormorant)', 'Cormorant Garamond', 'serif'],
       },
       spacing: {

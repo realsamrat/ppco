@@ -9,6 +9,7 @@ var blog = defineDocs({
       description: z.string(),
       category: z.string(),
       image: z.string().optional(),
+      video: z.string().optional(),
       author: z.string().default("Portland Picture Company"),
       keywords: z.array(z.string()).optional()
     })

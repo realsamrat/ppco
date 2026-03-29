@@ -48,13 +48,13 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
           <div className="absolute inset-0 bg-gradient-to-b from-forest/70 via-forest/50 to-forest/70"></div>
         </div>
         <div className="relative z-10 text-center px-6 max-w-4xl">
-          <span className="font-nav text-xs font-bold uppercase tracking-widest text-terracotta mb-4 block">
+          <span className="text-xs font-bold uppercase tracking-widest text-terracotta mb-4 block">
             {post.category}
           </span>
           <h1 className="font-heading text-4xl md:text-6xl text-warmWhite mb-4 drop-shadow-lg">
             {post.title}
           </h1>
-          <p className="font-nav text-sm text-warmWhite/90 drop-shadow-md">{post.date}</p>
+          <p className="text-sm text-warmWhite/90 drop-shadow-md">{post.date}</p>
         </div>
       </section>
 
@@ -63,7 +63,7 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
         <div className="container mx-auto px-6 max-w-3xl">
           <div className="prose prose-lg max-w-none">
             {post.content.split('\n\n').map((paragraph, i) => (
-              <p key={i} className="font-body text-lg text-forest-light leading-relaxed mb-6">
+              <p key={i} className="text-lg text-forest-light leading-relaxed mb-6">
                 {paragraph.split('**').map((part, j) =>
                   j % 2 === 0 ? (
                     part
@@ -107,16 +107,16 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <span className="font-nav text-xs font-bold uppercase tracking-widest text-terracotta mb-3 block">
+                  <span className="text-xs font-bold uppercase tracking-widest text-terracotta mb-3 block">
                     {relatedPost.category}
                   </span>
                   <h3 className="font-heading text-2xl text-forest mb-3 group-hover:text-terracotta transition-colors">
                     {relatedPost.title}
                   </h3>
-                  <p className="font-body text-forest-light text-sm leading-relaxed mb-4 flex-grow">
+                  <p className="text-forest-light text-sm leading-relaxed mb-4 flex-grow">
                     {relatedPost.excerpt}
                   </p>
-                  <span className="font-nav text-xs text-sage">{relatedPost.date}</span>
+                  <span className="text-xs text-sage">{relatedPost.date}</span>
                 </Link>
               ))}
             </div>

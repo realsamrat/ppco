@@ -89,7 +89,7 @@ export const Hero: React.FC = () => {
                                 <h2 className="font-heading text-2xl md:text-4xl text-warmWhite mb-2 drop-shadow-xl">
                                     {category.title}
                                 </h2>
-                                <p className="font-nav text-[10px] md:text-xs uppercase tracking-[3px] font-medium text-warmWhite/90 mb-6 drop-shadow-lg">
+                                <p className="text-[10px] md:text-xs uppercase tracking-[3px] font-medium text-warmWhite/90 mb-6 drop-shadow-lg">
                                     {category.description}
                                 </p>
                                 <Link href={`/services/${category.id}`}>

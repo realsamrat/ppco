@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
             <div className="flex flex-col items-center lg:items-start mb-2">
               <Logo variant="light" className="w-56 h-auto mb-4" />
             </div>
-            <p className="font-body text-sage leading-relaxed max-w-xs">
+            <p className="text-sage leading-relaxed max-w-xs">
               Capturing authentic moments for weddings, families, brands, and life's milestones across the Pacific Northwest.
             </p>
           </div>
@@ -26,7 +26,7 @@ export const Footer: React.FC = () => {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="font-nav text-sm font-medium uppercase tracking-widest text-driftwood hover:text-terracotta transition-colors"
+                  className="text-sm font-medium uppercase tracking-widest text-driftwood hover:text-terracotta transition-colors"
                 >
                   {item.label}
                 </a>
@@ -36,8 +36,8 @@ export const Footer: React.FC = () => {
 
           {/* Contact / Social */}
           <div className="flex flex-col items-center lg:items-end lg:text-right pt-4">
-            <h4 className="font-nav text-sm font-medium uppercase tracking-widest text-mint mb-6">Get In Touch</h4>
-            <a href="mailto:hello@portlandpictureco.com" className="font-body text-xl text-warmWhite hover:text-terracotta transition-colors mb-6 decoration-transparent border-b border-transparent hover:border-terracotta pb-1">
+            <h4 className="text-sm font-medium uppercase tracking-widest text-mint mb-6">Get In Touch</h4>
+            <a href="mailto:hello@portlandpictureco.com" className="text-xl text-warmWhite hover:text-terracotta transition-colors mb-6 decoration-transparent border-b border-transparent hover:border-terracotta pb-1">
               hello@portlandpictureco.com
             </a>
             <div className="flex gap-4">
@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
 
         {/* Copyright */}
         <div className="border-t border-white/10 pt-12 text-center">
-          <p className="font-nav text-xs text-sage tracking-wider">
+          <p className="text-xs text-sage tracking-wider">
             © {new Date().getFullYear()} Portland Picture Co. | Designed with ❤️ in Oregon
           </p>
         </div>

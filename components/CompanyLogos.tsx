@@ -16,7 +16,7 @@ export const CompanyLogos: React.FC = () => {
         <section className="py-16 bg-cream border-y border-driftwood">
             <div className="container mx-auto px-6 max-w-[1290px]">
                 <div className="text-center mb-10">
-                    <h4 className="font-nav text-xs font-bold uppercase tracking-widest text-sage">
+                    <h4 className="text-xs font-bold uppercase tracking-widest text-sage">
                         Trusted By Portland's Best
                     </h4>
                 </div>

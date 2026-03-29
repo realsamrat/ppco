@@ -65,7 +65,7 @@ export const ServicesPage: React.FC = () => {
             {/* Hero */}
             <section className="pt-48 pb-32 bg-linen text-center px-6">
                 <h1 className="font-heading text-5xl md:text-6xl text-forest mb-6">Our Services</h1>
-                <p className="font-body text-lg text-forest-light max-w-2xl mx-auto leading-relaxed">
+                <p className="text-lg text-forest-light max-w-2xl mx-auto leading-relaxed">
                     We offer a range of photography services tailored to capture the most important moments of your life and business.
                 </p>
             </section>
@@ -85,14 +85,14 @@ export const ServicesPage: React.FC = () => {
                             <div className="w-full lg:w-[35%] p-12 lg:p-20 flex flex-col justify-center bg-white">
                                 <div className="max-w-xl mx-auto lg:mx-0">
                                     <h2 className="font-heading text-4xl md:text-5xl text-forest mb-6">{service.title}</h2>
-                                    <p className="font-body text-lg text-forest-light leading-relaxed mb-8">
+                                    <p className="text-lg text-forest-light leading-relaxed mb-8">
                                         {service.description}
                                     </p>
                                     <ul className="space-y-3 mb-10">
                                         {service.features.map((feature, i) => (
                                             <li key={i} className="flex items-center gap-3">
                                                 <IconCheck className="w-5 h-5 text-terracotta flex-shrink-0" />
-                                                <span className="font-nav text-sm text-forest font-bold tracking-wide uppercase">{feature}</span>
+                                                <span className="text-sm text-forest font-bold tracking-wide uppercase">{feature}</span>
                                             </li>
                                         ))}
                                     </ul>

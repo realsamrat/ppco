@@ -16,7 +16,7 @@ export const ContactPage: React.FC = () => {
       {/* Hero */}
       <section className="pt-48 pb-32 bg-linen text-center px-6">
         <h1 className="font-heading text-5xl md:text-6xl text-forest mb-6">Get in Touch</h1>
-        <p className="font-body text-lg text-forest-light max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg text-forest-light max-w-2xl mx-auto leading-relaxed">
           Ready to create something beautiful together? We'd love to hear about your vision and
           answer any questions you have.
         </p>
@@ -29,7 +29,7 @@ export const ContactPage: React.FC = () => {
             {/* Contact Information */}
             <div>
               <h2 className="font-heading text-3xl md:text-4xl text-forest mb-8">Let's Connect</h2>
-              <p className="font-body text-lg text-forest-light leading-relaxed mb-12">
+              <p className="text-lg text-forest-light leading-relaxed mb-12">
                 Whether you're planning a wedding, need updated headshots, or want to capture your
                 family's story, we're here to help. Fill out the form or reach out directly—we
                 typically respond within 24 hours.
@@ -37,34 +37,34 @@ export const ContactPage: React.FC = () => {
 
               <div className="space-y-8">
                 <div>
-                  <h3 className="font-nav text-sm font-bold uppercase tracking-widest text-terracotta mb-2">
+                  <h3 className="text-sm font-bold uppercase tracking-widest text-terracotta mb-2">
                     Email
                   </h3>
                   <a
                     href="mailto:hello@portlandpictureco.com"
-                    className="font-body text-lg text-forest hover:text-terracotta transition-colors"
+                    className="text-lg text-forest hover:text-terracotta transition-colors"
                   >
                     hello@portlandpictureco.com
                   </a>
                 </div>
 
                 <div>
-                  <h3 className="font-nav text-sm font-bold uppercase tracking-widest text-terracotta mb-2">
+                  <h3 className="text-sm font-bold uppercase tracking-widest text-terracotta mb-2">
                     Phone
                   </h3>
                   <a
                     href="tel:+15035551234"
-                    className="font-body text-lg text-forest hover:text-terracotta transition-colors"
+                    className="text-lg text-forest hover:text-terracotta transition-colors"
                   >
                     (503) 555-1234
                   </a>
                 </div>
 
                 <div>
-                  <h3 className="font-nav text-sm font-bold uppercase tracking-widest text-terracotta mb-2">
+                  <h3 className="text-sm font-bold uppercase tracking-widest text-terracotta mb-2">
                     Location
                   </h3>
-                  <p className="font-body text-lg text-forest-light">
+                  <p className="text-lg text-forest-light">
                     Portland, Oregon
                     <br />
                     Serving the Pacific Northwest
@@ -72,10 +72,10 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <h3 className="font-nav text-sm font-bold uppercase tracking-widest text-terracotta mb-2">
+                  <h3 className="text-sm font-bold uppercase tracking-widest text-terracotta mb-2">
                     Hours
                   </h3>
-                  <p className="font-body text-lg text-forest-light">
+                  <p className="text-lg text-forest-light">
                     Monday - Friday: 9am - 6pm
                     <br />
                     Saturday: By Appointment
@@ -85,7 +85,7 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <h3 className="font-nav text-sm font-bold uppercase tracking-widest text-terracotta mb-4">
+                  <h3 className="text-sm font-bold uppercase tracking-widest text-terracotta mb-4">
                     Follow Us
                   </h3>
                   <div className="flex gap-4">
@@ -95,7 +95,7 @@ export const ContactPage: React.FC = () => {
                       rel="noopener noreferrer"
                       className="text-forest hover:text-terracotta transition-colors"
                     >
-                      <span className="font-body text-lg">Instagram</span>
+                      <span className="text-lg">Instagram</span>
                     </a>
                     <span className="text-driftwood">•</span>
                     <a
@@ -104,7 +104,7 @@ export const ContactPage: React.FC = () => {
                       rel="noopener noreferrer"
                       className="text-forest hover:text-terracotta transition-colors"
                     >
-                      <span className="font-body text-lg">Facebook</span>
+                      <span className="text-lg">Facebook</span>
                     </a>
                     <span className="text-driftwood">•</span>
                     <a
@@ -113,7 +113,7 @@ export const ContactPage: React.FC = () => {
                       rel="noopener noreferrer"
                       className="text-forest hover:text-terracotta transition-colors"
                     >
-                      <span className="font-body text-lg">Pinterest</span>
+                      <span className="text-lg">Pinterest</span>
                     </a>
                   </div>
                 </div>

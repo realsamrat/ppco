@@ -26,7 +26,7 @@ export const PortfolioPage: React.FC = () => {
       {/* Hero */}
       <section className="pt-48 pb-32 bg-linen text-center px-6">
         <h1 className="font-heading text-5xl md:text-6xl text-forest mb-6">Our Portfolio</h1>
-        <p className="font-body text-lg text-forest-light max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg text-forest-light max-w-2xl mx-auto leading-relaxed">
           Explore our work across all photography specialties. Each gallery showcases the authentic
           moments and visual stories we create.
         </p>

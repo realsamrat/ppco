@@ -15,23 +15,21 @@ export const BlogCTA: React.FC<BlogCTAProps> = ({
 }) => {
   return (
     <div className="my-12 not-prose">
-      <div className="bg-linen border border-stone px-8 py-10">
-        <div className="flex flex-col gap-6">
+      <div className="bg-linen border border-stone px-8 py-10 rounded-lg">
+        <div className="flex flex-col gap-4">
           <div className="flex-1">
-            <p className="font-nav text-xs font-bold uppercase tracking-widest text-terracotta mb-3">
-              Portland Picture Company
-            </p>
+            <img src="/ppco_logo.svg" alt="Portland Picture Co." className="w-24 h-auto mb-4" />
             <h3 className="font-heading text-2xl md:text-3xl text-forest mb-3 leading-tight">
               {heading}
             </h3>
-            <p className="font-body text-forest-light leading-relaxed text-base">
+            <p className="text-forest-light leading-relaxed" style={{ fontSize: '16px' }}>
               {body}
             </p>
           </div>
           <div>
             <Link
               href={href}
-              className="inline-flex items-center gap-3 bg-terracotta text-warmWhite font-nav text-xs font-bold uppercase tracking-widest px-8 py-4 hover:bg-terracotta-dark transition-colors"
+              className="inline-flex items-center gap-3 bg-terracotta text-warmWhite text-sm font-medium px-6 py-3 rounded-lg hover:bg-terracotta-dark transition-colors"
             >
               {label}
               <span className="text-base">→</span>

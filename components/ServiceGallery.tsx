@@ -56,7 +56,7 @@ export const ServiceGallery: React.FC<ServiceGalleryProps> = ({ serviceName, her
                 </div>
                 <div className="relative z-10 text-center px-6">
                     <h1 className="font-heading text-5xl md:text-7xl text-warmWhite mb-4 drop-shadow-lg">{serviceName}</h1>
-                    <p className="font-body text-lg md:text-xl text-warmWhite/90 max-w-2xl mx-auto drop-shadow-md">
+                    <p className="text-lg md:text-xl text-warmWhite/90 max-w-2xl mx-auto drop-shadow-md">
                         Explore our portfolio of {serviceName.toLowerCase()} photography
                     </p>
                 </div>

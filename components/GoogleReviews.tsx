@@ -83,16 +83,16 @@ export const GoogleReviews: React.FC = () => {
                         <div className="flex items-center justify-between mb-3">
                             <div className="flex items-center gap-2">
                                 <GoogleIcon />
-                                <span className="font-nav text-xs font-semibold text-forest">Google Review</span>
+                                <span className="text-xs font-semibold text-forest">Google Review</span>
                             </div>
                             <StarRating rating={review.rating} />
                         </div>
-                        <p className="font-body text-sm text-forest-light mb-3 line-clamp-2">
+                        <p className="text-sm text-forest-light mb-3 line-clamp-2">
                             "{review.text}"
                         </p>
                         <div className="flex items-center justify-between">
-                            <span className="font-nav text-xs font-medium text-forest">{review.author}</span>
-                            <span className="font-nav text-xs text-sage">{review.date}</span>
+                            <span className="text-xs font-medium text-forest">{review.author}</span>
+                            <span className="text-xs text-sage">{review.date}</span>
                         </div>
                     </div>
                 ))}
